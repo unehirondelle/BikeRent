@@ -142,7 +142,7 @@
                     $("#card_" + bike.id).append("<div id='card_body_" + bike.id + "' class='card-body'></div>");
                     $("#card_body_" + bike.id).append("<h5 class='card-title'>" + bike.name + "</h5>");
                     $("#card_body_" + bike.id).append("<h6 id='price'>" + '$ ' + bike.price + "</h6>");
-                    $("#card_" + bike.id).append("<input class='text-center' type='number' value='0' min='0' max='10' step='1'>");
+                    $("#card_" + bike.id).append("<input class='text-center quantity' type='number' value='0' min='0' max='10' step='1' bikeId='" + bike.id + "'>");
                     $("#card_" + bike.id).append("<div class='card-footer text-center'><a href='#' id='btn_" + bike.id + "' class='btn btn-primary'>Select</a></div>");
                     $("#btn_" + bike.id).click(function () {
                         $(this).toggleClass("btn-primary btn-success");
@@ -153,7 +153,35 @@
                 }
 
                 $("input[type='number']").inputSpinner();
+                $(".btn-increment, .btn-decrement").click(function (a) {
+                    console.log('oooo', a);
+                    $(".list-element").remove();
+                    /* $(".list-element").filter(function () {
+                         console.log("$('.quantity').val()");
+                         return $(".quantity").val() !== 0;
 
+                     });*/
+                    $(document).ready(function () {
+                        console.log('cart loaded');
+                        for (let j = 0; j < bikes.length; j++) {
+                            let item = bikes[j];
+                            // console.log(item.id);
+                            $("[bikeId=" + item.id + "]").each(function () {
+                                console.log("id ", item.id, "quantity ", $(this).val());
+                            })
+                            // if ("item.id.quantity".val() > 0) {
+                            $("#cart").append("<li id='cart_" + item.id + "' class='list-group-item d-flex justify-content-between lh-condensed list-element'></li>");
+                            $("#cart_" + item.id).append("<div id='cart_item_" + item.id + "'></div>");
+                            $("#cart_item_" + item.id).append("<h6 id='cart_title_' class='my-0'>" + item.name + "</h6>");
+                            $("#cart_" + item.id).append("<span id='cart_price_' class='text-muted'>" + '$ ' + item.price + "</span>");
+                            $("item.id").on()
+                            // }
+                            ;
+                        }
+                    })
+                    /*$("#card_").val(bikeId);
+                    console.log("value" + $("#card_").val(bikes[].id);)*/
+                });
 
                 // $.ajax({
                 //     headers: {
@@ -223,21 +251,21 @@
                         </div>
                         <span class="text-muted">$5</span>
                     </li>-->
-                    <script type="text/javascript">
-                        $(document).ready(function () {
-                            console.log('cart loaded');
-                            for (let j = 0; j < bikes.length; j++) {
-                                let item = bikes[j];
-                                console.log(item.id);
-                                $("#cart").append("<li id='cart_" + item.id + "' class='list-group-item d-flex justify-content-between lh-condensed'></li>");
-                                $("#cart_" + item.id).append("<div id='cart_item_" + item.id + "'></div>");
-                                $("#cart_item_" + item.id).append("<h6 id='cart_title_' class='my-0'>" + item.name + "</h6>");
-                                $("#cart_" + item.id).append("<span id='cart_price_' class='text-muted'>" + '$ ' + item.price + "</span>");
-                                $("item.id").on()
-                            }
-                            ;
-                        })
-                    </script>
+                    <!-- <script type="text/javascript">
+                         $(document).ready(function () {
+                             console.log('cart loaded');
+                             for (let j = 0; j < bikes.length; j++) {
+                                 let item = bikes[j];
+                                 console.log(item.id);
+                                 $("#cart").append("<li id='cart_" + item.id + "' class='list-group-item d-flex justify-content-between lh-condensed'></li>");
+                                 $("#cart_" + item.id).append("<div id='cart_item_" + item.id + "'></div>");
+                                 $("#cart_item_" + item.id).append("<h6 id='cart_title_' class='my-0'>" + item.name + "</h6>");
+                                 $("#cart_" + item.id).append("<span id='cart_price_' class='text-muted'>" + '$ ' + item.price + "</span>");
+                                 $("item.id").on()
+                             }
+                             ;
+                         })
+                     </script>-->
                 </div>
                 <!-- <li class="list-group-item d-flex justify-content-between bg-light">
                          <div class="text-success">
