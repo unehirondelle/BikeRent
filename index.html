@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Heroic Features - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/heroic-features.css" rel="stylesheet">
+    <link href="form-validation.css" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="inventory.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="bootstrap-input-spinner-master/src/bootstrap-input-spinner.js"></script>
+    <script>
+        $("input[type='number']").inputSpinner();
+    </script>
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+        <h1 class="display-3">A Warm Welcome!</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt
+            possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam
+            repellat.</p>
+        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
+    </header>
+
+    <!-- Page Features -->
+
+    <div class="row text-center" id="cards">
+
+        <!--<div class="col-lg-3 col-md-6 mb-4">
+          <div class="card h-100">
+            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+            <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Find Out More!</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card h-100">
+            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+            <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Find Out More!</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card h-100">
+            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+            <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Find Out More!</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card h-100">
+            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+            <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Find Out More!</a>
+            </div>
+          </div>
+        </div>
+
+      </div>-->
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                console.log(bikes);
+                console.log('loaded');
+                for (let i = 0; i < bikes.length; i++) {
+                    let bike = bikes[i];
+                    console.log(bikes[i].name);
+                    $("#cards").append("<div id='card_col_" + bike.id + "' class='col-lg-3 col-md-6 mb-4'>");
+                    $("#card_col_" + bike.id).append("<div id='card_" + bike.id + "'class='card h-100'></div>");
+                    $("#card_" + bike.id).append("<img id='card_img_' src=" + bike.image + "alt=" + bike.name + "class='card-img-top'>");
+                    $("#card_" + bike.id).append("<div id='card_body_" + bike.id + "' class='card-body'></div>");
+                    $("#card_body_" + bike.id).append("<h5 class='card-title'>" + bike.name + "</h5>");
+                    $("#card_body_" + bike.id).append("<h6 id='price'>" + '$ ' + bike.price + "</h6>");
+                    $("#card_" + bike.id).append("<input class='text-center' type='number' value='0' min='0' max='10' step='1'>");
+                    $("#card_" + bike.id).append("<div class='card-footer text-center'><a href='#' id='btn_" + bike.id + "' class='btn btn-primary'>Select</a></div>");
+                    $("#btn_" + bike.id).click(function () {
+                        $(this).toggleClass("btn-primary btn-success");
+                        $(this).text(function (i, text) {
+                            return text === "Select" ? "Selected" : "Select"
+                        });
+                    });
+                }
+
+                $("input[type='number']").inputSpinner();
+
+
+                // $.ajax({
+                //     headers: {
+                //         "Accept": "application/json",
+                //         'Access-Control-Allow-Origin': '*'
+                //     },
+                //     method: "GET",
+                //     //crossDomain: true,
+                //     url: "bikerentals.json",
+                //     //dataType: "jsonp",
+                //     success: function (data) {
+                //         console.log('succc');
+                //         var items = [];
+                //         $.each(data, function (key, val) {
+                //             console.log(key, val);
+                //             items.push("<li id='" + key + "'>" + val + "</li>");
+                //         });
+                //
+                //         $("<ul/>", {
+                //             "class": "my-new-list",
+                //             html: items.join("")
+                //         }).appendTo("body");
+                //         console.log(items);
+                //     }
+                //     ,
+                //     error:
+                //
+                //         function (xhr, ajaxOptions, thrownError) {
+                //             console.log('errr', thrownError);
+                //         }
+                // }).done(function (d) {
+                //     console.log('d' + d)
+                // });
+            })
+
+        </script>
+
+    </div>
+    <!-- /.row -->
+
+    <!-- User's data form -->
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your cart</span>
+            </h4>
+            <ul class="list-group mb-3">
+                <div id="cart">
+                    <!--<li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Product name</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">$12</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Second product</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">$8</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Third item</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">$5</span>
+                    </li>-->
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            console.log('cart loaded');
+                            for (let j = 0; j < bikes.length; j++) {
+                                let item = bikes[j];
+                                console.log(item.id);
+                                $("#cart").append("<li id='cart_" + item.id + "' class='list-group-item d-flex justify-content-between lh-condensed'></li>");
+                                $("#cart_" + item.id).append("<div id='cart_item_" + item.id + "'></div>");
+                                $("#cart_item_" + item.id).append("<h6 id='cart_title_' class='my-0'>" + item.name + "</h6>");
+                                $("#cart_" + item.id).append("<span id='cart_price_' class='text-muted'>" + '$ ' + item.price + "</span>");
+                                $("item.id").on()
+                            }
+                            ;
+                        })
+                    </script>
+                </div>
+                <!-- <li class="list-group-item d-flex justify-content-between bg-light">
+                         <div class="text-success">
+                             <h6 class="my-0">Promo code</h6>
+                             <small>EXAMPLECODE</small>
+                         </div>
+                         <span class="text-success">-$5</span>
+                     </li>-->
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (USD)</span>
+                    <strong>$20</strong>
+                </li>
+
+            </ul>
+        </div>
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Tell us about yourself</h4>
+            <form class="needs-validation" novalidate>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName">First name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            Valid first name is required.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="lastName">Last name</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            Valid last name is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                    <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+                <!-- <div class="mb-3">
+                     <label for="address">Address</label>
+                     <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                     <div class="invalid-feedback">
+                         Please enter your shipping address.
+                     </div>
+                 </div>
+
+                 <div class="mb-3">
+                     <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+                     <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                 </div>
+
+                 <div class="row">
+                     <div class="col-md-5 mb-3">
+                         <label for="country">Country</label>
+                         <select class="custom-select d-block w-100" id="country" required>
+                             <option value="">Choose...</option>
+                             <option>United States</option>
+                         </select>
+                         <div class="invalid-feedback">
+                             Please select a valid country.
+                         </div>
+                     </div>
+                     <div class="col-md-4 mb-3">
+                         <label for="state">State</label>
+                         <select class="custom-select d-block w-100" id="state" required>
+                             <option value="">Choose...</option>
+                             <option>California</option>
+                         </select>
+                         <div class="invalid-feedback">
+                             Please provide a valid state.
+                         </div>
+                     </div>
+                     <div class="col-md-3 mb-3">
+                         <label for="zip">Zip</label>
+                         <input type="text" class="form-control" id="zip" placeholder="" required>
+                         <div class="invalid-feedback">
+                             Zip code required.
+                         </div>
+                     </div>
+                 </div>
+                 <hr class="mb-4">
+                 <div class="custom-control custom-checkbox">
+                     <input type="checkbox" class="custom-control-input" id="same-address">
+                     <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+                 </div>
+                 <div class="custom-control custom-checkbox">
+                     <input type="checkbox" class="custom-control-input" id="save-info">
+                     <label class="custom-control-label" for="save-info">Save this information for next time</label>
+                 </div>-->
+                <hr class="mb-4">
+
+                <h4 class="mb-3">Payment</h4>
+
+                <div class="d-block my-3">
+                    <div class="custom-control custom-radio">
+                        <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked
+                               required>
+                        <label class="custom-control-label" for="credit">Credit card</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                        <label class="custom-control-label" for="debit">Debit card</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                        <label class="custom-control-label" for="paypal">Paypal</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="cc-name">Name on card</label>
+                        <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                        <small class="text-muted">Full name as displayed on card</small>
+                        <div class="invalid-feedback">
+                            Name on card is required
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="cc-number">Credit card number</label>
+                        <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Credit card number is required
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="cc-expiration">Expiration</label>
+                        <input type="text" class="form-control" id="cc-expiration" placeholder="MM/YY" required>
+                        <div class="invalid-feedback">
+                            Expiration date required
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="cc-expiration">CVV</label>
+                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Security code required
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Place your order</button>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+</body>
+
+</html>
