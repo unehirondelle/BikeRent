@@ -178,7 +178,7 @@
                                     $("#cart").append("<li id='cart_" + id + "' class='list-group-item d-flex justify-content-between lh-condensed list-element'></li>");
                                     $("#cart_" + id).append("<div id='cart_item_" + id + "'></div>");
                                     $("#cart_item_" + id).append("<h6 id='cart_title_' class='my-0'>" + cart_title + "</h6>");
-                                    $("#cart_" + id).append("<span id='cart_price_' class='text-muted'>" + price_ * $(this).val() + "</span>");
+                                    $("#cart_" + id).append("<span id='cart_price_' class='text-muted'>" + '$ ' + price_ * $(this).val() + "</span>");
                                     total += price_ * $(this).val();
                                     //$("item.id").on()
                                 }
@@ -187,7 +187,7 @@
                         $("#cart").append("<li id='cart_' class='list-group-item d-flex justify-content-between lh-condensed list-element'></li>");
                         $("#cart_").append("<div id='cart_item_'></div>");
                         $("#cart_item_").append("<h4 id='cart_title_' class='my-0'>Total</h4>");
-                        $("#cart_").append("<span id='cart_price_'>" + total + "</span>");
+                        $("#cart_").append("<span id='cart_price_'>" + '$ ' + total + "</span>");
 
                         /*for (let j = 0; j < bikes.length; j++) {
                             let item = bikes[j];
