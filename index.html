@@ -143,13 +143,13 @@
                     $("#card_body_" + bike.id).append("<h5 id='card_title_" + bike.id + "' class='card-title'>" + bike.name + "</h5>");
                     $("#card_body_" + bike.id).append("<h6 id='price_" + bike.id + "'>" + '$ ' + bike.price + "</h6>");
                     $("#card_" + bike.id).append("<input id='quantity' class='text-center quantity' type='number' value='0' min='0' max='10' step='1' bikeId='" + bike.id + "'>");
-                    $("#card_" + bike.id).append("<div class='card-footer text-center'><a href='#' id='btn_" + bike.id + "' class='btn btn-primary'>Select</a></div>");
-                    $("#btn_" + bike.id).click(function () {
-                        $(this).toggleClass("btn-primary btn-success");
-                        $(this).text(function (i, text) {
-                            return text === "Select" ? "Selected" : "Select"
-                        });
-                    });
+                    // $("#card_" + bike.id).append("<div class='card-footer text-center'><a href='#' id='btn_" + bike.id + "' class='btn btn-primary'>Select</a></div>");
+                    /* $("#btn_" + bike.id).click(function () {
+                         $(this).toggleClass("btn-primary btn-success");
+                         $(this).text(function (i, text) {
+                             return text === "Select" ? "Selected" : "Select"
+                         });
+                     });*/
                 }
 
                 $("input[type='number']").inputSpinner();
@@ -167,73 +167,78 @@
                                 console.log("id +", $(this).attr("bikeId"), "quantity ", $(this).val());
                                 let id = $(this).attr("bikeId");
                                 console.log("card_title", $('#card_title_' + id).text());
-                                let cart_title =  $('#card_title_' + id).text();
-                                let price = $('#price_' + id).text();
+                                let cart_title = $('#card_title_' + id).text();
+                                let price_$ = $('#price_' + id).text();
+                                console.log("old price", price_$);
+                                let price_ = price_$.replace('$ ', '');
+                                console.log("new price", price_);
+
                                 let bike = bikes[id];
-                                if ($(this).val() > 0){
+
+                                if ($(this).val() > 0) {
                                     $("#cart").append("<li id='cart_" + id + "' class='list-group-item d-flex justify-content-between lh-condensed list-element'></li>");
                                     $("#cart_" + id).append("<div id='cart_item_" + id + "'></div>");
                                     $("#cart_item_" + id).append("<h6 id='cart_title_' class='my-0'>" + cart_title + "</h6>");
-                                    $("#cart_" + id).append("<span id='cart_price_' class='text-muted'>" + price + "</span>");
+                                    $("#cart_" + id).append("<span id='cart_price_' class='text-muted'>" + price_ * $(this).val() + "</span>");
                                     //$("item.id").on()
 
                                 }
                             }
                         )
 
-                            /*for (let j = 0; j < bikes.length; j++) {
-                                let item = bikes[j];
-                                // console.log(item.id);
-                                $("[bikeId=" + item.id + "]").each(function () {
-                                    console.log("id ", item.id, "quantity ", $(this).val());
-                                })
-                                // if ("item.id.quantity".val() > 0) {
-                                $("#cart").append("<li id='cart_" + item.id + "' class='list-group-item d-flex justify-content-between lh-condensed list-element'></li>");
-                                $("#cart_" + item.id).append("<div id='cart_item_" + item.id + "'></div>");
-                                $("#cart_item_" + item.id).append("<h6 id='cart_title_' class='my-0'>" + item.name + "</h6>");
-                                $("#cart_" + item.id).append("<span id='cart_price_' class='text-muted'>" + '$ ' + item.price + "</span>");
-                                $("item.id").on()
-                                // }
-                                ;
-                            }*/
+                        /*for (let j = 0; j < bikes.length; j++) {
+                            let item = bikes[j];
+                            // console.log(item.id);
+                            $("[bikeId=" + item.id + "]").each(function () {
+                                console.log("id ", item.id, "quantity ", $(this).val());
+                            })
+                            // if ("item.id.quantity".val() > 0) {
+                            $("#cart").append("<li id='cart_" + item.id + "' class='list-group-item d-flex justify-content-between lh-condensed list-element'></li>");
+                            $("#cart_" + item.id).append("<div id='cart_item_" + item.id + "'></div>");
+                            $("#cart_item_" + item.id).append("<h6 id='cart_title_' class='my-0'>" + item.name + "</h6>");
+                            $("#cart_" + item.id).append("<span id='cart_price_' class='text-muted'>" + '$ ' + item.price + "</span>");
+                            $("item.id").on()
+                            // }
+                            ;
+                        }*/
 
                     })
-                /*$("#card_").val(bikeId);
-                console.log("value" + $("#card_").val(bikes[].id);)*/
-            });
+                    /*$("#card_").val(bikeId);
+                    console.log("value" + $("#card_").val(bikes[].id);)*/
+                });
 
-            // $.ajax({
-            //     headers: {
-            //         "Accept": "application/json",
-            //         'Access-Control-Allow-Origin': '*'
-            //     },
-            //     method: "GET",
-            //     //crossDomain: true,
-            //     url: "bikerentals.json",
-            //     //dataType: "jsonp",
-            //     success: function (data) {
-            //         console.log('succc');
-            //         var items = [];
-            //         $.each(data, function (key, val) {
-            //             console.log(key, val);
-            //             items.push("<li id='" + key + "'>" + val + "</li>");
-            //         });
-            //
-            //         $("<ul/>", {
-            //             "class": "my-new-list",
-            //             html: items.join("")
-            //         }).appendTo("body");
-            //         console.log(items);
-            //     }
-            //     ,
-            //     error:
-            //
-            //         function (xhr, ajaxOptions, thrownError) {
-            //             console.log('errr', thrownError);
-            //         }
-            // }).done(function (d) {
-            //     console.log('d' + d)
-            // });
+                // $.ajax({
+                //     headers: {
+                //         "Accept": "application/json",
+                //         'Access-Control-Allow-Origin': '*'
+                //     },
+                //     method: "GET",
+                //     //crossDomain: true,
+                //     url: "bikerentals.json",
+                //     //dataType: "jsonp",
+                //     success: function (data) {
+                //         console.log('succc');
+                //         var items = [];
+                //         $.each(data, function (key, val) {
+                //             console.log(key, val);
+                //             items.push("<li id='" + key + "'>" + val + "</li>");
+                //         });
+                //
+                //         $("<ul/>", {
+                //             "class": "my-new-list",
+                //             html: items.join("")
+                //         }).appendTo("body");
+                //         console.log(items);
+                //     }
+                //     ,
+                //     error:
+                //
+                //         function (xhr, ajaxOptions, thrownError) {
+                //             console.log('errr', thrownError);
+                //         }
+                // }).done(function (d) {
+                //     console.log('d' + d)
+                // });
             })
 
         </script>
