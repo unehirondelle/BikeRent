@@ -142,7 +142,7 @@
                     $("#card_" + bike.id).append("<div id='card_body_" + bike.id + "' class='card-body'></div>");
                     $("#card_body_" + bike.id).append("<h5 class='card-title'>" + bike.name + "</h5>");
                     $("#card_body_" + bike.id).append("<h6 id='price'>" + '$ ' + bike.price + "</h6>");
-                    $("#card_" + bike.id).append("<input class='text-center quantity' type='number' value='0' min='0' max='10' step='1' bikeId='" + bike.id + "'>");
+                    $("#card_" + bike.id).append("<input id='quantity' class='text-center quantity' type='number' value='0' min='0' max='10' step='1' bikeId='" + bike.id + "'>");
                     $("#card_" + bike.id).append("<div class='card-footer text-center'><a href='#' id='btn_" + bike.id + "' class='btn btn-primary'>Select</a></div>");
                     $("#btn_" + bike.id).click(function () {
                         $(this).toggleClass("btn-primary btn-success");
@@ -163,7 +163,10 @@
                      });*/
                     $(document).ready(function () {
                         console.log('cart loaded');
-                        for (let j = 0; j < bikes.length; j++) {
+                        $("input#quantity").each(function () {
+                            console.log("id +", $(this).attr("bikeId"), "quantity ", $(this).val());
+                        });
+                        /*for (let j = 0; j < bikes.length; j++) {
                             let item = bikes[j];
                             // console.log(item.id);
                             $("[bikeId=" + item.id + "]").each(function () {
@@ -177,7 +180,7 @@
                             $("item.id").on()
                             // }
                             ;
-                        }
+                        }*/
                     })
                     /*$("#card_").val(bikeId);
                     console.log("value" + $("#card_").val(bikes[].id);)*/
