@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Heroic Features - Start Bootstrap Template</title>
+    <title>Rent-A-Bike</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -16,10 +16,15 @@
     <!-- Custom styles for this template -->
     <link href="css/heroic-features.css" rel="stylesheet">
     <link href="form-validation.css" rel="stylesheet">
+<!--    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">-->
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="inventory.js"></script>
+    <script src="inventory-availability.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="bootstrap-input-spinner-master/src/bootstrap-input-spinner.js"></script>
     <script>
@@ -142,7 +147,7 @@
                     $("#card_" + bike.id).append("<div id='card_body_" + bike.id + "' class='card-body'></div>");
                     $("#card_body_" + bike.id).append("<h5 id='card_title_" + bike.id + "' class='card-title'>" + bike.name + "</h5>");
                     $("#card_body_" + bike.id).append("<h6 id='price_" + bike.id + "'>" + '$ ' + bike.price + "</h6>");
-                    $("#card_" + bike.id).append("<input id='quantity' class='text-center quantity' type='number' value='0' min='0' max='10' step='1' bikeId='" + bike.id + "'>");
+                    $("#card_" + bike.id).append("<input id='quantity' class='text-center quantity' type='number' value='0' min='0' max='50' step='1' bikeId='" + bike.id + "'>");
                     // $("#card_" + bike.id).append("<div class='card-footer text-center'><a href='#' id='btn_" + bike.id + "' class='btn btn-primary'>Select</a></div>");
                     /* $("#btn_" + bike.id).click(function () {
                          $(this).toggleClass("btn-primary btn-success");
@@ -163,9 +168,9 @@
                      });*/
                     $(document).ready(function () {
                         console.log('cart loaded');
-                        let total=0;
+                        let total = 0;
                         $("input#quantity").each(function () {
-                                console.log("id +", $(this).attr("bikeId"), "quantity ", $(this).val());
+                                console.log("id:", $(this).attr("bikeId"), "quantity: ", $(this).val());
                                 let id = $(this).attr("bikeId");
                                 console.log("card_title", $('#card_title_' + id).text());
                                 let cart_title = $('#card_title_' + id).text();
@@ -174,13 +179,17 @@
                                 let price_ = price_$.replace('$ ', '');
                                 console.log("new price", price_);
                                 let bike = bikes[id];
-                                if ($(this).val() > 0) {
+                                let available = availability[id-1].quantity;
+                                console.log("availability: ", available);
+                                if ($(this).val() > 0 && $(this).val() <= available) {
                                     $("#cart").append("<li id='cart_" + id + "' class='list-group-item d-flex justify-content-between lh-condensed list-element'></li>");
                                     $("#cart_" + id).append("<div id='cart_item_" + id + "'></div>");
                                     $("#cart_item_" + id).append("<h6 id='cart_title_' class='my-0'>" + cart_title + "</h6>");
                                     $("#cart_" + id).append("<span id='cart_price_' class='text-muted'>" + '$ ' + price_ * $(this).val() + "</span>");
                                     total += price_ * $(this).val();
                                     //$("item.id").on()
+                                }else if ($(this).val() > 0 && $(this).val() > available) {
+                                    alert("Available: " + available + " item(s).");
                                 }
                             }
                         )
@@ -301,10 +310,10 @@
                          </div>
                          <span class="text-success">-$5</span>
                      </li>-->
-               <!-- <li class="list-group-item d-flex justify-content-between">
-                    <span>Total (USD)</span>
-                    <strong>$20</strong>
-                </li>-->
+                <!-- <li class="list-group-item d-flex justify-content-between">
+                     <span>Total (USD)</span>
+                     <strong>$20</strong>
+                 </li>-->
 
             </ul>
         </div>
@@ -472,6 +481,7 @@
                         event.stopPropagation();
                     }
                     form.classList.add('was-validated');
+                    alert("Thank you for your order!");
                 }, false);
             });
         }, false);
