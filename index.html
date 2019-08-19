@@ -84,7 +84,7 @@
                 $(".btn-increment, .btn-decrement").click(function (a) {
                     console.log('build cards', a);
                     $(".list-element").remove();
-                    $(document).ready(function () {
+                    // $(document).ready(function () {
                         console.log('cart loaded');
                         let total = 0;
                         $("input#quantity").each(function () {
@@ -115,7 +115,7 @@
                         $("#cart_").append("<div id='cart_item_'></div>");
                         $("#cart_item_").append("<h4 id='cart_title_' class='my-0'>Total</h4>");
                         $("#cart_").append("<span id='cart_price_'>" + '$ ' + total + "</span>");
-                    })
+                    // })
                 });
             })
         </script>
