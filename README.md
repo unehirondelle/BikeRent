@@ -9,6 +9,8 @@ jQuery | Build the web page content using JSON data;<br> Build the cart based on
 CSS | Web page styling to make it similar to the main customer's website | https://www.w3schools.com/css/
 Javascript | Form validation |https://www.javascript.com/
 
+> I've also used [Bootstrap input spinner plugin](https://github.com/shaack/bootstrap-input-spinner) to get nice + and - buttons as input method.
+
 ## Running the application
 Go to the GitHub Page: https://unehirondelle.github.io/BikeRent/
 
