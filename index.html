@@ -81,40 +81,40 @@
                     $("#card_" + bike.id).append("<input id='quantity' class='text-center quantity' type='number' value='0' min='0' max='51' step='1' bikeId='" + bike.id + "' index='" + bikes.indexOf(bike) + "'>");
                 }
                 $("input[type='number']").inputSpinner();
-                $(".btn-increment, .btn-decrement").click(function (a) {
+                $(".btn-increment, .btn-decrement").on("touchstart click", function (a) {
                     console.log('build cards', a);
                     $(".list-element").remove();
                     // $(document).ready(function () {
-                        console.log('cart loaded');
-                        let total = 0;
-                        $("input#quantity").each(function () {
-                                console.log("id:", $(this).attr("bikeId"), "quantity: ", $(this).val());
-                                let id = $(this).attr("bikeId");
-                                console.log("card_title", $('#card_title_' + id).text());
-                                let cart_title = $('#card_title_' + id).text();
-                                let price_$ = $('#price_' + id).text();
-                                console.log("old price", price_$);
-                                let price_ = price_$.replace('$ ', '');
-                                console.log("new price", price_);
-                                let index = $(this).attr("index");
-                                console.log("index: ", index);
-                                let available = availability[index].quantity;
-                                console.log("availability: ", available);
-                                if ($(this).val() > 0 && $(this).val() <= available) {
-                                    $("#cart").append("<li id='cart_" + id + "' class='list-group-item d-flex justify-content-between lh-condensed list-element'></li>");
-                                    $("#cart_" + id).append("<div id='cart_item_" + id + "'></div>");
-                                    $("#cart_item_" + id).append("<h6 id='cart_title_' class='my-0'>" + cart_title + "</h6>");
-                                    $("#cart_" + id).append("<span id='cart_price_' class='text-muted'>" + '$ ' + price_ * $(this).val() + "</span>");
-                                    total += price_ * $(this).val();
-                                } else if ($(this).val() > 0 && $(this).val() > available) {
-                                    alert("Available: " + available + " item(s).");
-                                }
+                    console.log('cart loaded');
+                    let total = 0;
+                    $("input#quantity").each(function () {
+                            console.log("id:", $(this).attr("bikeId"), "quantity: ", $(this).val());
+                            let id = $(this).attr("bikeId");
+                            console.log("card_title", $('#card_title_' + id).text());
+                            let cart_title = $('#card_title_' + id).text();
+                            let price_$ = $('#price_' + id).text();
+                            console.log("old price", price_$);
+                            let price_ = price_$.replace('$ ', '');
+                            console.log("new price", price_);
+                            let index = $(this).attr("index");
+                            console.log("index: ", index);
+                            let available = availability[index].quantity;
+                            console.log("availability: ", available);
+                            if ($(this).val() > 0 && $(this).val() <= available) {
+                                $("#cart").append("<li id='cart_" + id + "' class='list-group-item d-flex justify-content-between lh-condensed list-element'></li>");
+                                $("#cart_" + id).append("<div id='cart_item_" + id + "'></div>");
+                                $("#cart_item_" + id).append("<h6 id='cart_title_' class='my-0'>" + cart_title + "</h6>");
+                                $("#cart_" + id).append("<span id='cart_price_' class='text-muted'>" + '$ ' + price_ * $(this).val() + "</span>");
+                                total += price_ * $(this).val();
+                            } else if ($(this).val() > 0 && $(this).val() > available) {
+                                alert("Available: " + available + " item(s).");
                             }
-                        );
-                        $("#cart").append("<li id='cart_' class='list-group-item d-flex justify-content-between lh-condensed list-element'></li>");
-                        $("#cart_").append("<div id='cart_item_'></div>");
-                        $("#cart_item_").append("<h4 id='cart_title_' class='my-0'>Total</h4>");
-                        $("#cart_").append("<span id='cart_price_'>" + '$ ' + total + "</span>");
+                        }
+                    );
+                    $("#cart").append("<li id='cart_' class='list-group-item d-flex justify-content-between lh-condensed list-element'></li>");
+                    $("#cart_").append("<div id='cart_item_'></div>");
+                    $("#cart_item_").append("<h4 id='cart_title_' class='my-0'>Total</h4>");
+                    $("#cart_").append("<span id='cart_price_'>" + '$ ' + total + "</span>");
                     // })
                 });
             })
