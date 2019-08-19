@@ -16,10 +16,10 @@
     <!-- Custom styles for this template -->
     <link href="css/heroic-features.css" rel="stylesheet">
     <link href="form-validation.css" rel="stylesheet">
-<!--    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/favicon_io/site.webmanifest">-->
+    <!--    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="/favicon_io/site.webmanifest">-->
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -147,7 +147,7 @@
                     $("#card_" + bike.id).append("<div id='card_body_" + bike.id + "' class='card-body'></div>");
                     $("#card_body_" + bike.id).append("<h5 id='card_title_" + bike.id + "' class='card-title'>" + bike.name + "</h5>");
                     $("#card_body_" + bike.id).append("<h6 id='price_" + bike.id + "'>" + '$ ' + bike.price + "</h6>");
-                    $("#card_" + bike.id).append("<input id='quantity' class='text-center quantity' type='number' value='0' min='0' max='50' step='1' bikeId='" + bike.id + "'>");
+                    $("#card_" + bike.id).append("<input id='quantity' class='text-center quantity' type='number' value='0' min='0' max='51' step='1' bikeId='" + bike.id + "' index='" + bikes.indexOf(bike) + "'>");
                     // $("#card_" + bike.id).append("<div class='card-footer text-center'><a href='#' id='btn_" + bike.id + "' class='btn btn-primary'>Select</a></div>");
                     /* $("#btn_" + bike.id).click(function () {
                          $(this).toggleClass("btn-primary btn-success");
@@ -178,8 +178,10 @@
                                 console.log("old price", price_$);
                                 let price_ = price_$.replace('$ ', '');
                                 console.log("new price", price_);
-                                let bike = bikes[id];
-                                let available = availability[id-1].quantity;
+                                // let bike = bikes[id];
+                                let index = $(this).attr("index");
+                                console.log("index: ", index);
+                                let available = availability[index].quantity;
                                 console.log("availability: ", available);
                                 if ($(this).val() > 0 && $(this).val() <= available) {
                                     $("#cart").append("<li id='cart_" + id + "' class='list-group-item d-flex justify-content-between lh-condensed list-element'></li>");
@@ -188,7 +190,7 @@
                                     $("#cart_" + id).append("<span id='cart_price_' class='text-muted'>" + '$ ' + price_ * $(this).val() + "</span>");
                                     total += price_ * $(this).val();
                                     //$("item.id").on()
-                                }else if ($(this).val() > 0 && $(this).val() > available) {
+                                } else if ($(this).val() > 0 && $(this).val() > available) {
                                     alert("Available: " + available + " item(s).");
                                 }
                             }
