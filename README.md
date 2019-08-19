@@ -5,7 +5,8 @@ Simple web-application emulating bicycle rental service
 Framework | Purpose | URL
 ------------ | ------------- | -------------
 Bootstrap | Template | http://getbootstrap.com/
-jQuery | Build the web page content using JSON data; Build the cart based on user's actions| https://jquery.com/
+jQuery | Build the web page content using JSON data; 
+Build the cart based on user's actions| https://jquery.com/
 CSS | Web page styling to make it similar to the main customer's website | https://www.w3schools.com/css/
 Javascript | Form validation |https://www.javascript.com/
 
